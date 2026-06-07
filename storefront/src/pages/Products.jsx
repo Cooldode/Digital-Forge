@@ -16,7 +16,7 @@ const categories = [
       'SSL certificate and security included',
     ],
     templates: ['Solo Pro', 'Local Biz', 'Realty', 'Legal', 'E-Com Lite'],
-    price: 'From $899 + $29/mo',
+    price: 'From $599 + $19/mo',
   },
   {
     id: 'ai-agents',
@@ -33,7 +33,7 @@ const categories = [
       'Analytics dashboard with conversation history',
     ],
     templates: ['FAQ Bot', 'Lead Gen Bot', 'Custom Agent'],
-    price: 'From $1,499 + $49/mo',
+    price: 'From $899 + $29/mo',
   },
   {
     id: 'apps',
@@ -50,7 +50,7 @@ const categories = [
       'Multi-user support with roles',
     ],
     templates: ['Booking System', 'Client Portal', 'Waitlist Manager'],
-    price: 'From $1,999 + $49/mo',
+    price: 'From $1,199 + $29/mo',
   },
 ]
 

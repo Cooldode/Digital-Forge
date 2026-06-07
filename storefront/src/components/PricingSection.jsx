@@ -4,25 +4,25 @@ const pricingPlans = [
   {
     title: 'Websites',
     tiers: [
-      { name: 'Starter', price: '$899', monthly: '$29/mo', popular: false, features: ['1-page website', 'Solo Pro template', 'Contact form', 'Mobile responsive', 'SEO meta tags', '1 hr handoff call'] },
-      { name: 'Standard', price: '$1,499', monthly: '$49/mo', popular: true, features: ['Multi-page (up to 5)', 'Any template', 'Image gallery', 'Blog section', 'Google Analytics', 'Priority support'] },
-      { name: 'E-Com', price: '$2,499', monthly: '$79/mo', popular: false, features: ['Up to 50 products', 'Shopping cart', 'Stripe checkout', 'Inventory management', 'Order notifications', 'Dedicated support'] },
+      { name: 'Starter', price: '$599', monthly: '$19/mo', popular: false, features: ['1-page website', 'Solo Pro template', 'Contact form', 'Mobile responsive', 'SEO meta tags', '1 hr handoff call'] },
+      { name: 'Standard', price: '$999', monthly: '$29/mo', popular: true, features: ['Multi-page (up to 5)', 'Any template', 'Image gallery', 'Blog section', 'Google Analytics', 'Priority support'] },
+      { name: 'E-Com', price: '$1,799', monthly: '$49/mo', popular: false, features: ['Up to 50 products', 'Shopping cart', 'Stripe checkout', 'Inventory management', 'Order notifications', 'Dedicated support'] },
     ],
   },
   {
     title: 'AI Agents',
     tiers: [
-      { name: 'FAQ Bot', price: '$1,499', monthly: '$49/mo', popular: false, features: ['Knowledge base Q&A', '500 queries/month', 'Embeddable widget', 'Basic analytics', 'Email support', '1 revision cycle'] },
-      { name: 'Lead Gen Bot', price: '$2,499', monthly: '$99/mo', popular: true, features: ['Lead capture forms', '2,000 queries/month', 'Appointment booking', 'CRM integration', 'Custom training', 'Priority support'] },
-      { name: 'Custom Agent', price: '$4,999+', monthly: '$199/mo', popular: false, features: ['Custom tool plugins', 'Unlimited queries', 'Multi-channel', 'Dedicated infrastructure', 'SLA guarantee', '24/7 support'] },
+      { name: 'FAQ Bot', price: '$899', monthly: '$29/mo', popular: false, features: ['Knowledge base Q&A', '500 queries/month', 'Embeddable widget', 'Basic analytics', 'Email support', '1 revision cycle'] },
+      { name: 'Lead Gen Bot', price: '$1,599', monthly: '$49/mo', popular: true, features: ['Lead capture forms', '2,000 queries/month', 'Appointment booking', 'CRM integration', 'Custom training', 'Priority support'] },
+      { name: 'Custom Agent', price: '$2,999', monthly: '$99/mo', popular: false, features: ['Custom tool plugins', 'Unlimited queries', 'Multi-channel', 'Dedicated infrastructure', 'SLA guarantee', '24/7 support'] },
     ],
   },
   {
     title: 'Pre-built Apps',
     tiers: [
-      { name: 'Starter', price: '$1,999', monthly: '$49/mo', popular: false, features: ['1 staff account', 'Up to 5 services', 'Email confirmations', 'Calendar view', 'Basic admin panel', '1hr setup call'] },
-      { name: 'Pro', price: '$3,499', monthly: '$99/mo', popular: true, features: ['Multiple staff', 'Stripe payments', 'Calendar sync', 'Custom domain', 'Client portal', 'Priority support'] },
-      { name: 'Enterprise', price: '$5,999+', monthly: '$199/mo', popular: false, features: ['White-label branding', 'Custom integrations', 'Dedicated infra', 'API access', 'SLA guarantee', '24/7 support'] },
+      { name: 'Starter', price: '$1,199', monthly: '$29/mo', popular: false, features: ['1 staff account', 'Up to 5 services', 'Email confirmations', 'Calendar view', 'Basic admin panel', '1hr setup call'] },
+      { name: 'Pro', price: '$2,299', monthly: '$49/mo', popular: true, features: ['Multiple staff', 'Stripe payments', 'Calendar sync', 'Custom domain', 'Client portal', 'Priority support'] },
+      { name: 'Enterprise', price: '$3,999', monthly: '$99/mo', popular: false, features: ['White-label branding', 'Custom integrations', 'Dedicated infra', 'API access', 'SLA guarantee', '24/7 support'] },
     ],
   },
 ]
