@@ -1,75 +1,60 @@
 import { Link } from 'react-router-dom'
 
-const pricingPlans = [
-  {
-    title: 'Websites',
-    tiers: [
-      { name: 'Starter', price: '$599', monthly: '$19/mo', popular: false, features: ['1-page website', 'Solo Pro template', 'Contact form', 'Mobile responsive', 'SEO meta tags', '1 hr handoff call'] },
-      { name: 'Standard', price: '$999', monthly: '$29/mo', popular: true, features: ['Multi-page (up to 5)', 'Any template', 'Image gallery', 'Blog section', 'Google Analytics', 'Priority support'] },
-      { name: 'E-Com', price: '$1,799', monthly: '$49/mo', popular: false, features: ['Up to 50 products', 'Shopping cart', 'Stripe checkout', 'Inventory management', 'Order notifications', 'Dedicated support'] },
-    ],
-  },
-  {
-    title: 'AI Agents',
-    tiers: [
-      { name: 'FAQ Bot', price: '$899', monthly: '$29/mo', popular: false, features: ['Knowledge base Q&A', '500 queries/month', 'Embeddable widget', 'Basic analytics', 'Email support', '1 revision cycle'] },
-      { name: 'Lead Gen Bot', price: '$1,599', monthly: '$49/mo', popular: true, features: ['Lead capture forms', '2,000 queries/month', 'Appointment booking', 'CRM integration', 'Custom training', 'Priority support'] },
-      { name: 'Custom Agent', price: '$2,999', monthly: '$99/mo', popular: false, features: ['Custom tool plugins', 'Unlimited queries', 'Multi-channel', 'Dedicated infrastructure', 'SLA guarantee', '24/7 support'] },
-    ],
-  },
-  {
-    title: 'Pre-built Apps',
-    tiers: [
-      { name: 'Starter', price: '$1,199', monthly: '$29/mo', popular: false, features: ['1 staff account', 'Up to 5 services', 'Email confirmations', 'Calendar view', 'Basic admin panel', '1hr setup call'] },
-      { name: 'Pro', price: '$2,299', monthly: '$49/mo', popular: true, features: ['Multiple staff', 'Stripe payments', 'Calendar sync', 'Custom domain', 'Client portal', 'Priority support'] },
-      { name: 'Enterprise', price: '$3,999', monthly: '$99/mo', popular: false, features: ['White-label branding', 'Custom integrations', 'Dedicated infra', 'API access', 'SLA guarantee', '24/7 support'] },
-    ],
-  },
-]
-
 export default function PricingSection() {
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {pricingPlans.map((plan, i) => (
-          <div key={i} className="mb-20 last:mb-0">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">{plan.title}</h3>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {plan.tiers.map((tier, j) => (
-                <div key={j} className={`rounded-xl p-6 border transition-all duration-300 ${
-                  tier.popular
-                    ? 'bg-[#E85D2C]/10 border-[#E85D2C]/40 relative'
-                    : 'bg-[#2D2D44] border-gray-700/30 hover:border-[#E85D2C]/30'
-                }`}>
-                  {tier.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#E85D2C] text-white text-xs font-bold px-4 py-1 rounded-full">
-                      Most Popular
-                    </div>
-                  )}
-                  <div className="text-center mb-6">
-                    <h4 className="text-lg font-semibold text-white mb-2">{tier.name}</h4>
-                    <div className="text-3xl font-bold text-white">{tier.price}</div>
-                    <div className="text-sm text-[#9C9CB0]">+ {tier.monthly}</div>
-                  </div>
-                  <ul className="space-y-3 mb-8">
-                    {tier.features.map((f, k) => (
-                      <li key={k} className="flex items-start gap-2 text-sm text-[#9C9CB0]">
-                        <span className="text-[#2EC4B6] mt-0.5">✓</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/contact" className={`block text-center font-semibold px-6 py-3 rounded-lg transition-all duration-200 ${
-                    tier.popular
-                      ? 'bg-[#E85D2C] hover:bg-[#d44d1f] text-white shadow-lg shadow-[#E85D2C]/25'
-                      : 'border border-[#E85D2C] text-[#E85D2C] hover:bg-[#E85D2C] hover:text-white'
-                  }`}>
-                    Get Started
-                  </Link>
-                </div>
-              ))}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Simple, Transparent Pricing</h2>
+          <p className="text-[#9C9CB0] text-lg max-w-2xl mx-auto">
+            One price. Everything included. No tiers, no upsells.
+          </p>
+        </div>
+
+        <div className="max-w-lg mx-auto">
+          <div className="bg-[#2D2D44] rounded-2xl p-8 md:p-10 border border-[#E85D2C]/30 hover:border-[#E85D2C]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-[#E85D2C] text-white text-xs font-bold px-4 py-1.5 rounded-bl-lg">
+              Best Value
             </div>
+
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-white mb-2">The All-in-One Bundle</h3>
+              <p className="text-[#9C9CB0]">Custom Website + AI Agent + App</p>
+            </div>
+
+            <div className="text-center mb-8">
+              <div className="text-5xl font-extrabold text-white mb-2">$500</div>
+              <div className="text-lg text-[#E85D2C] font-semibold">+ $10–$100/mo</div>
+              <p className="text-sm text-[#9C9CB0] mt-2">Monthly fee scales with complexity</p>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {[
+                { label: 'Custom Website', desc: 'Vite + React + Tailwind, responsive, SEO-optimized, contact forms' },
+                { label: 'AI Agent', desc: '24/7 lead capture, FAQ handling, appointment booking, client intake' },
+                { label: 'Custom App', desc: 'Booking system, lead tracker, client portal, or whatever you need most' },
+                { label: 'Built in 7–14 days', desc: 'From kickoff to launch — fast turnaround' },
+                { label: 'Ongoing Management', desc: 'Hosting, updates, security, monitoring, support included' },
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="text-[#2EC4B6] mt-1 flex-shrink-0">✓</span>
+                  <div>
+                    <span className="text-white font-medium">{item.label}</span>
+                    <span className="text-[#9C9CB0] text-sm block">{item.desc}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <Link to="/contact" className="block w-full bg-[#E85D2C] hover:bg-[#d44d1f] text-white text-center font-bold text-lg px-6 py-4 rounded-lg transition-all duration-200 shadow-lg shadow-[#E85D2C]/25">
+              Get Started — $500
+            </Link>
+
+            <p className="text-center text-[#9C9CB0] text-xs mt-4">
+              Simple brochure site + basic chatbot: ~$10/mo &middot; Full e-commerce + lead gen + booking: ~$100/mo
+            </p>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   )
