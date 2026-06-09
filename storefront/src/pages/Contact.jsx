@@ -1,11 +1,40 @@
 import { useState } from 'react'
 
+// The Formspree form ID — replace YOUR_FORMSPREE_ID with the actual ID from Formspree
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
+const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError(null)
+
+    const form = e.target
+    const data = new FormData(form)
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        const json = await res.json()
+        setError(json?.error || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection and try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -28,22 +57,25 @@ export default function Contact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
+            <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6" noValidate>
+              {/* Hidden fields for Formspree */}
+              <input type="hidden" name="_subject" value="New inquiry from The Digital Forge website" />
+
               <div>
-                <label className="block text-sm font-medium text-white mb-2">Name *</label>
-                <input type="text" required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="Your name" />
+                <label className="block text-sm font-medium text-white mb-2" htmlFor="name">Name *</label>
+                <input id="name" name="name" type="text" required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="Your name" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-white mb-2">Email *</label>
-                <input type="email" required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="you@company.com" />
+                <label className="block text-sm font-medium text-white mb-2" htmlFor="email">Email *</label>
+                <input id="email" name="email" type="email" required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="you@company.com" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-white mb-2">Company</label>
-                <input type="text" className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="Your company name" />
+                <label className="block text-sm font-medium text-white mb-2" htmlFor="company">Company</label>
+                <input id="company" name="company" type="text" className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="Your company name" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-white mb-2">What are you interested in? *</label>
-                <select required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#E85D2C] transition-colors">
+                <label className="block text-sm font-medium text-white mb-2" htmlFor="interest">What are you interested in? *</label>
+                <select id="interest" name="interest" required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#E85D2C] transition-colors">
                   <option value="">Select an option</option>
                   <option value="website">Website Package</option>
                   <option value="ai-agent">AI Agent</option>
@@ -52,11 +84,22 @@ export default function Contact() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-white mb-2">Tell us about your project *</label>
-                <textarea rows={4} required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="What do you need built? What's your timeline? Any specific features?" />
+                <label className="block text-sm font-medium text-white mb-2" htmlFor="message">Tell us about your project *</label>
+                <textarea id="message" name="message" rows={4} required className="w-full bg-[#2D2D44] border border-gray-700/30 rounded-lg px-4 py-3 text-white placeholder-[#9C9CB0] focus:outline-none focus:border-[#E85D2C] transition-colors" placeholder="What do you need built? What's your timeline? Any specific features?" />
               </div>
-              <button type="submit" className="w-full bg-[#E85D2C] hover:bg-[#d44d1f] text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg shadow-[#E85D2C]/25">
-                Send Request
+
+              {error && (
+                <div className="bg-red-900/30 border border-red-500/30 rounded-lg px-4 py-3 text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-[#E85D2C] hover:bg-[#d44d1f] disabled:bg-[#E85D2C]/50 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg shadow-[#E85D2C]/25"
+              >
+                {sending ? 'Sending...' : 'Send Request'}
               </button>
             </form>
           )}
