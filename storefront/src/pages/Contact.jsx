@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-// The Formspree form ID — replace YOUR_FORMSPREE_ID with the actual ID from Formspree
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
+// The Formspree form ID — update once the owner signs up
+const FORMSPREE_ID = 'xxxx'
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
 
 export default function Contact() {
@@ -57,9 +57,10 @@ export default function Contact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6" noValidate>
+            <form onSubmit={handleSubmit} action={FORMSPREE_URL} method="POST" className="max-w-lg mx-auto space-y-6" noValidate>
               {/* Hidden fields for Formspree */}
-              <input type="hidden" name="_subject" value="New inquiry from The Digital Forge website" />
+              <input type="hidden" name="_subject" value="New Digital Forge Inquiry" />
+              <input type="hidden" name="_next" value="/" />
 
               <div>
                 <label className="block text-sm font-medium text-white mb-2" htmlFor="name">Name *</label>
