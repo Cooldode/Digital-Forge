@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // The Formspree form ID — update once the owner signs up
-const FORMSPREE_ID = 'xxxx'
+const FORMSPREE_ID = 'xvznrnqw'
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
 
 export default function Contact() {
